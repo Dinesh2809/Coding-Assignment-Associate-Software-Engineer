@@ -1,0 +1,122 @@
+                                                           <<<.......HTML CODE.......>>>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<body>
+    <h1>Basic Calculator</h1>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="display-box" readonly>
+        </div>
+        <div class="buttons">
+            <button class="digit" onclick="appendToDisplay('1')">1</button>
+            <button class="digit" onclick="appendToDisplay('2')">2</button>
+            <button class="digit" onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <button class="digit" onclick="appendToDisplay('4')">4</button>
+            <button class="digit" onclick="appendToDisplay('5')">5</button>
+            <button class="digit" onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            <button class="digit" onclick="appendToDisplay('7')">7</button>
+            <button class="digit" onclick="appendToDisplay('8')">8</button>
+            <button class="digit" onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+            <button class="clear" onclick="clearDisplay()">AC</button>
+            <button class="digit" onclick="appendToDisplay('0')">0</button>
+            <button class="equals" onclick="calculate()">=</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+        </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>
+
+
+ ............................................. <<<.......CSS CODE.......>>>....................................................................................
+
+
+
+.calculator {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+.h1{
+    text-align: center;
+}
+
+.display {
+    background-color: #f3f3f3;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#display-box {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    text-align: right;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+}
+
+button.operator {
+    background-color: #ff8c00;
+}
+
+button.digit {
+    background-color: #333;
+    color: #fff;
+}
+
+button.equals {
+    background-color: #4caf50;
+}
+
+button.clear {
+    background-color: #f44336;
+}
+
+
+.................................................... <<<.......JAVASCRIPT CODE.......>>>........................................................................
+
+
+let currentInput = '';
+
+function appendToDisplay(value) {
+    currentInput += value;
+    document.getElementById('display-box').value = currentInput;
+}
+
+function clearDisplay() {
+    currentInput = '';
+    document.getElementById('display-box').value = '';
+}
+
+function calculate() {
+    try {
+        let result = eval(currentInput);
+        currentInput = result.toString();
+        document.getElementById('display-box').value = result;
+    } catch (error) {
+        currentInput = '';
+        document.getElementById('display-box').value = 'Error';
+    }
+}
+
