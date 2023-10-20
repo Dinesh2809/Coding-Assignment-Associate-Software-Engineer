@@ -1,0 +1,14 @@
+var originalArray = [];
+var size = prompt();
+
+for(var i=0; i<size; i++) {
+	
+	originalArray[i] = prompt();
+}
+
+originalArray.sort(function(a, b) {
+  
+    return b - a;
+});
+
+console.log("Sorted array in descending order: " + originalArray);
